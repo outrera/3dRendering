@@ -3,6 +3,11 @@
 
 template <typename T>
 class Vec3 {
+
+    // we make the z coordinate one for two dimensional shapes simply because this
+    // allows them to be rendered on the near clipping plane so we can use 2d
+    // planes as screen elements rather than world elements
+
     T point[3];
     T* x = &point[0], y = &point[1] ,z = &point[2];
 
@@ -16,6 +21,17 @@ class Vec3 {
         point[0] = Point[0];
         point[1] = Point[1];
         point[2] = Point[2];
+    }
+    Vec3(T x, T y) {
+        point[0] = x;
+        point[1] = y;
+        point[2] = 1;
+    }
+    Vec3(T Point[2]) {
+        point[0] = Point[0];
+        point[1] = Point[1];
+        point[2] = 1;       // This is what allows us to have 2d coordinates render
+                            // on the near clipping plane
     }
 
     // OPERATORS
