@@ -1,0 +1,6 @@
+#ifndef CAMERA_HPP_INCLUDED
+#define CAMERA_HPP_INCLUDED
+
+
+
+#endif // CAMERA_HPP_INCLUDED
