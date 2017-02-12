@@ -41,7 +41,7 @@
 		<Unit filename="include/camera.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Matrix.cpp" />
-		<Unit filename="src/Mesh.h" />
+		<Unit filename="src/Mesh.cpp" />
 		<Unit filename="src/Vector3.cpp" />
 		<Extensions>
 			<code_completion />

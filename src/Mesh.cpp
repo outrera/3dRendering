@@ -24,10 +24,18 @@ void Mesh::loadMesh(char* fileName) {
         // continue with parsing
 
         if ( strcmp( lineHeader, "v" ) == 0 ) {
+
             Vec3<float> vertex;
             fscanf(file, "%f %f %f\n", &vertex.point[0],
                                        &vertex.point[1],
                                        &vertex.point[2]);
+            vertices.push_back(vertex);
+
+        }
+        else if ( strcmp( lineHeader, "vt" ) == 0 ) {
+
+            Vec3<float> uv;
+
         }
     }
 
