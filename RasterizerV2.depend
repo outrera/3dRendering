@@ -2,3 +2,18 @@
 1485172089 source:e:\codeprojects\rasterizerv2\main.cpp
 	<iostream>
 
+1486774965 source:c:\3drendering\main.cpp
+	<iostream>
+
+1486860388 source:c:\3drendering\src\matrix.cpp
+	"../include/Matrix.h"
+
+1486860313 c:\3drendering\include\matrix.h
+	<stdlib.h>
+	<vector>
+
+1486879933 source:c:\3drendering\src\vector3.cpp
+	"../include/Vector3.hpp"
+
+1486879927 c:\3drendering\include\vector3.hpp
+

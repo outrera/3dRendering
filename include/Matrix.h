@@ -1,8 +1,9 @@
 #ifndef MATRIX_H_INCLUDED
 #define MATRIX_H_INCLUDED
+#include <stdlib.h>
+#include <vector>
 
-template <typedef T>
-typedef T** Matrix;
+typedef float** Matrix;
 
 void allocateMatrix( Matrix &m, int columns, int rows );
 

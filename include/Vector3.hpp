@@ -17,6 +17,7 @@ class Vec3 {
         point[1] = y;
         point[2] = z;
     }
+    // put a one in Point[2] to make it a two dimensional point
     Vec3(T Point[3]) {
         point[0] = Point[0];
         point[1] = Point[1];
@@ -27,103 +28,99 @@ class Vec3 {
         point[1] = y;
         point[2] = 1;
     }
-    Vec3(T Point[2]) {
-        point[0] = Point[0];
-        point[1] = Point[1];
-        point[2] = 1;       // This is what allows us to have 2d coordinates render
-                            // on the near clipping plane
-    }
 
     // OPERATORS
 
     // assignment operator
-    friend Vec3 operator = (Vec3 v) {
+    Vec3 operator = (Vec3 v) {
         point[0] = v.point[0];
         point[1] = v.point[1];
         point[2] = v.point[2];
     }
 
     // comparison operators
-    friend Vec3 operator == (Vec3 v) {
+    bool operator == (Vec3 v) {
         if (point[0] == v.point[0] &&
             point[1] == v.point[1] &&
             point[2] == v.point[2]){return true;}
         return false;
     }
 
-    friend Vec3 operator != (Vec3 v) {
+    bool operator != (Vec3 v) {
         return !(this == v);
     }
 
     // basic arithmetic
-    friend Vec3 operator + (Vec3 v) {
+    Vec3 operator + (Vec3 v) {
         Vec3 newVec;
-        newVec.x = v.x + x;
-        newVec.y = v.y + y;
-        newVec.z = v.z + z;
+        newVec.point[0] = v.point[0] + point[0];
+        newVec.point[1] = v.point[1] + point[1];
+        newVec.point[2] = v.point[2] + point[2];
         return newVec;
     }
-    friend Vec3 operator - (Vec3 v) {
+    Vec3 operator - (Vec3 v) {
         Vec3 newVec;
-        newVec.x = x - v.x;
-        newVec.y = y - v.y;
-        newVec.z = z - v.z;
-        return newVec
-    }
-    friend Vec3 operator * (Vec3 v) {
-        Vec3 newVec;
-        newVec.x = x * v.x;
-        newVec.y = y * v.y;
-        newVec.z = z * v.z;
+        newVec.point[0] = point[0] - v.point[0];
+        newVec.point[1] = point[1] - v.point[1];
+        newVec.point[2] = point[2] - v.point[2];
         return newVec;
     }
-    friend Vec3 operator / (Vec3 v) {
+    Vec3 operator * (Vec3 v) {
         Vec3 newVec;
-        newVec.x = x / v.x;
-        newVec.y = y / v.y;
-        newVec.z = z / v.z;
+        newVec.point[0] = point[0] * v.point[0];
+        newVec.point[1] = point[1] * v.point[1];
+        newVec.point[2] = point[2] * v.point[2];
+        return newVec;
+    }
+    Vec3 operator / (Vec3 v) {
+        Vec3 newVec;
+        newVec.point[0] = point[0] / v.point[0];
+        newVec.point[1] = point[1] / v.point[1];
+        newVec.point[2] = point[2] / v.point[2];
         return newVec;
     }
 
     //scalar math
-    friend Vec3 operator * (T scalar) {
+    Vec3 operator * (T scalar) {
         Vec3 newVec;
-        newVec.x = x * scalar;
-        newVec.y = y * scalar;
-        newVec.z = z * scalar;
+        newVec.point[0] = point[0] * scalar;
+        newVec.point[1] = point[1] * scalar;
+        newVec.point[2] = point[2] * scalar;
         return newVec;
     }
-    friend Vec3 operator / (T scalar) {
+    Vec3 operator / (T scalar) {
         Vec3 newVec;
-        newVec.x = x / scalar;
-        newVec.y = y / scalar;
-        newVec.z = z / scalar;
+        newVec.point[0] = point[0] / scalar;
+        newVec.point[1] = point[1] / scalar;
+        newVec.point[2] = point[2] / scalar;
         return newVec;
     }
 
     // ease of use operators
-    friend Vec3 operator += (Vec3 v) {
+    void operator += (Vec3 v) {
         this = this + v;
     }
-    friend Vec3 operator -= (Vec3 v) {
+    void operator -= (Vec3 v) {
         this = this - v;
     }
-    friend Vec3 operator *= (Vec3 v) {
+    void operator *= (Vec3 v) {
         this = this * v;
     }
-    friend Vec3 operator /= (Vec3 v) {
+    void operator /= (Vec3 v) {
         this = this / v;
     }
-    friend Vec3 operator *= (T scalar) {
+    void operator *= (T scalar) {
         this = this * scalar;
     }
-    friend Vec3 operator /= (T scalar) {
+    void operator /= (T scalar) {
         this = this / scalar;
     }
 
 };
 
-float dotProduct(Vec3 &v1, Vec3 &v2);
-Vec3 crossProduct(Vec3 &v1, Vec3 &v2);
+template<typename T>
+float dotProduct(Vec3<T> &v1, Vec3<T> &v2);
+template<typename T>
+Vec3<T> crossProduct(Vec3<T> &v1, Vec3<T> &v2);
 
 #endif // PRIMITIVES_HPP_INCLUDED

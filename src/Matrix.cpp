@@ -1,13 +1,15 @@
 #include "../include/Matrix.h"
-template <typedef T>
+
 // Allocate memory for a matrix, don't fill it with any data
 void allocateMatrix( Matrix &m, int columns, int rows ) {
-    Matrix = ( T** )malloc( sizeof(T*) * rows );
+    m = ( float** )malloc( sizeof(float*) * rows );
     for ( int i = 0; i < columns; i++ )
-        Matrix[i] = ( T* )malloc( sizeof(T) * columns );
+        m[i] = ( float* )malloc( sizeof(float) * columns );
 }
 // instantiate matrix from vector
-template <typedef T>
-void allocateMatrix( std::vector< std::vector<T> > matrix, Matrix& m) {
-    m = matrix.data();
+void allocateMatrix( std::vector< std::vector<float> > matrix, Matrix& m) {
+    m = ( float** )malloc( sizeof(float*) * matrix.size());
+    for ( int i = 0; i < matrix.size(); i++ ) {
+        m[i] = matrix[i].data();
+    }
 }
