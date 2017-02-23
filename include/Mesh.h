@@ -1,7 +1,11 @@
 #ifndef MESH_H_INCLUDED
 #define MESH_H_INCLUDED
+#include <vector>
+#include <stdio.h>
+#include <string.h>
 
-class Vec3;
+template <typename T> class Vec3;
+class Tri;
 
 class Mesh {
 public:
@@ -9,7 +13,7 @@ public:
     Vec3<float>* texCoords;
     Tri*         triangles;
 
-    void loadMesh(char* fileName);
+    bool loadMesh(char* fileName);
 };
 
 #endif // MESH_H_INCLUDED

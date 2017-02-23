@@ -1,10 +1,10 @@
 #ifndef FRUSTRUM_H_INCLUDED
 #define FRUSTRUM_H_INCLUDED
 
-class Frustrum {
+class Frustum {
 private:
     float normals[6];
-    Frustrum()
+    Frustum();
 }
 
 #endif // FRUSTRUM_H_INCLUDED

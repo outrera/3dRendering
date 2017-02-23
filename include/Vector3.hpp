@@ -3,30 +3,44 @@
 
 template <typename T>
 class Vec3 {
-
+public:
     // we make the z coordinate one for two dimensional shapes simply because this
     // allows them to be rendered on the near clipping plane so we can use 2d
     // planes as screen elements rather than world elements
 
-    T point[3];
-    T* x = &point[0], y = &point[1] ,z = &point[2];
+    T point[3] = {0,0,0};
+    T *x, *y, *z;
 
     // CONSTRUCTORS
-    Vec3(T x, T y, T z) {
-        point[0] = x;
-        point[1] = y;
-        point[2] = z;
+    Vec3(){
+        x = &point[0];
+        y = &point[1];
+        z = &point[2];
+    }
+    Vec3(T X, T Y, T Z) {
+        point[0] = X;
+        point[1] = Y;
+        point[2] = Z;
+        x = &point[0];
+        y = &point[1];
+        z = &point[2];
     }
     // put a one in Point[2] to make it a two dimensional point
     Vec3(T Point[3]) {
         point[0] = Point[0];
         point[1] = Point[1];
         point[2] = Point[2];
+        x = &point[0];
+        y = &point[1];
+        z = &point[2];
     }
-    Vec3(T x, T y) {
-        point[0] = x;
-        point[1] = y;
+    Vec3(T X, T Y) {
+        point[0] = X;
+        point[1] = Y;
         point[2] = 1;
+        x = &point[0];
+        y = &point[1];
+        z = &point[2];
     }
 
     // OPERATORS
@@ -117,6 +131,10 @@ class Vec3 {
     }
 
 };
+
+typedef Vec3<float>  Vec3f;
+typedef Vec3<int>    Vec3i;
+typedef Vec3<double> Vec3d;
 
 template<typename T>
 float dotProduct(Vec3<T> &v1, Vec3<T> &v2);

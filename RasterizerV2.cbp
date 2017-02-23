@@ -10,10 +10,17 @@
 				<Option output="bin/Debug/RasterizerV2" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
-				<Option compiler="gcc" />
+				<Option compiler="opencl" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="C:/OpenCL/include" />
+					<Add directory="C:/GnuWin32/include" />
 				</Compiler>
+				<Linker>
+					<Add library="OpenCL" />
+					<Add directory="C:/OpenCL/lib/x86" />
+					<Add directory="C:/GnuWin32/lib" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/RasterizerV2" prefix_auto="1" extension_auto="1" />
@@ -33,12 +40,15 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Frustrum.h" />
+		<Unit filename="include/Kernels.cl" />
 		<Unit filename="include/Matrix.h" />
 		<Unit filename="include/Mesh.h" />
 		<Unit filename="include/Model.h" />
 		<Unit filename="include/Triangle.h" />
 		<Unit filename="include/Vector3.hpp" />
+		<Unit filename="include/Window.h" />
 		<Unit filename="include/camera.hpp" />
+		<Unit filename="include/gpuAccelerator.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Matrix.cpp" />
 		<Unit filename="src/Mesh.cpp" />

@@ -1,12 +1,14 @@
 #ifndef CAMERA_HPP_INCLUDED
 #define CAMERA_HPP_INCLUDED
 
+class Frustum;
+
 class Camera {
 private:
     Vec3<float> centerOfProjection;
     Vec3<float> opticalAxisVector;
     Vec3<float> principalPoint;
-    Frustrum    viewingFrustrum;
+    Frustum    viewingFrustum;
     float       focalLength;
     float       hFov;
     float       vFov;

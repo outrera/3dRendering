@@ -1,14 +1,14 @@
 #include "../include/Mesh.h"
 #include "../include/Vector3.hpp"
 
-void Mesh::loadMesh(char* fileName) {
+bool Mesh::loadMesh(char* fileName) {
 
     // initialize storage for vertices and tex coords
     // stored in vectors to make it simpler than C style arrays
-    std::vector< Vec3<float> > vertices;
-    std::vector< Vec3<float> > texCoords;
+    std::vector< Vec3f > vertices;
+    std::vector< Vec3f > texCoords;
 
-    FILE * file = fopen(path, "r");
+    FILE * file = fopen(fileName, "r");
 
     if ( file == NULL ) // end loading if file doesn't exist
         return false;
@@ -25,7 +25,7 @@ void Mesh::loadMesh(char* fileName) {
 
         if ( strcmp( lineHeader, "v" ) == 0 ) {
 
-            Vec3<float> vertex;
+            Vec3f vertex;
             fscanf(file, "%f %f %f\n", &vertex.point[0],
                                        &vertex.point[1],
                                        &vertex.point[2]);
@@ -34,7 +34,9 @@ void Mesh::loadMesh(char* fileName) {
         }
         else if ( strcmp( lineHeader, "vt" ) == 0 ) {
 
-            Vec3<float> uv;
+            Vec3f uv(0,0);
+            fscanf(file, "%f %f\n", &uv.point[0], &uv.point[1]);
+            texCoords.push_back(uv);
 
         }
     }

@@ -9,7 +9,7 @@ void allocateMatrix( Matrix &m, int columns, int rows ) {
 // instantiate matrix from vector
 void allocateMatrix( std::vector< std::vector<float> > matrix, Matrix& m) {
     m = ( float** )malloc( sizeof(float*) * matrix.size());
-    for ( int i = 0; i < matrix.size(); i++ ) {
+    for ( unsigned int i = 0; i < matrix.size(); i++ ) {
         m[i] = matrix[i].data();
     }
 }
